@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     padding: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
+    color: 'white',
   },
   completedTask: {
     textDecorationLine: 'line-through',
