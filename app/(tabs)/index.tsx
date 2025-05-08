@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { FlatList, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { FlatList, Text, TouchableOpacity, StyleSheet, View, Button } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTasks } from '../../contexts/TaskContext';
 
@@ -9,21 +8,30 @@ export default function HomeScreen() {
   const { tasks } = useTasks();
 
   return (
-    <FlatList
-      data={tasks}
-      keyExtractor={item => item.id}
-      renderItem={({ item }) => (
-        <TouchableOpacity
-          style={styles.item}
-          onPress={() => router.push({
-            pathname: '/screens/TaskDetail',
-            params: { id: item.id, title: item.title, completed: item.completed.toString() },
-          })}
-        >
-          <Text style={styles.text}>{item.title}</Text>
-        </TouchableOpacity>
-      )}
-    />
+    <View style={{ flex: 1 }}>
+      <Button title="Add New Task" onPress={() => router.push('/screens/AddTask')} />
+      <FlatList
+        data={tasks}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            style={styles.item}
+            onPress={() =>
+              router.push({
+                pathname: '/screens/TaskDetail',
+                params: {
+                  id: item.id,
+                  title: item.title,
+                  completed: item.completed.toString(),
+                },
+              })
+            }
+          >
+            <Text style={styles.text}>{item.title}</Text>
+          </TouchableOpacity>
+        )}
+      />
+    </View>
   );
 }
 
@@ -35,6 +43,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    color: 'Black',
+    color: 'black',
   },
 });
