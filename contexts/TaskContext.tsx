@@ -14,9 +14,9 @@ const TaskContext = createContext<{
 
 export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState<Task[]>([
-    { id: '1', title: 'Walk Coco', completed: false },
+    { id: '1', title: ' Walk Coco', completed: false },
     { id: '2', title: ' Feed Coco', completed: false },
-    { id: '3', title: 'Give Coco a bath', completed: false },
+    { id: '3', title: ' Give Coco a bath', completed: false },
     { id: '4', title: ' Brush his fur', completed: false },
     { id: '5', title: ' Vet check-up', completed: false },
   ]);

@@ -1,17 +1,21 @@
+
 import React from 'react';
 import { FlatList, Text, TouchableOpacity, StyleSheet, View, Button } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useTasks } from '../../contexts/TaskContext';
+import { useTasksQuery } from '../../hooks/useTasksQuery';
 
 export default function HomeScreen() {
   const router = useRouter();
-  const { tasks } = useTasks();
+  const { data, isLoading, isError } = useTasksQuery();
+
+  if (isLoading) return <Text>Loading...</Text>;
+  if (isError) return <Text>Error loading tasks</Text>;
 
   return (
     <View style={{ flex: 1 }}>
       <Button title="Add New Task" onPress={() => router.push('/screens/AddTask')} />
       <FlatList
-        data={tasks}
+        data={data}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity
@@ -43,6 +47,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    color: 'black',
+    color: 'Black',
   },
 });

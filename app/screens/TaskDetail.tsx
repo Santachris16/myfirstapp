@@ -12,7 +12,7 @@ export default function TaskDetailScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.status}>
-        Status: {completed === 'true' ? ' Completed' : ' Pending'}
+        Status: {completed === 'true' ? 'Completed' : 'Pending'}
       </Text>
       <Button title="Toggle Complete" onPress={() => toggleTask(id as string)} />
     </View>
